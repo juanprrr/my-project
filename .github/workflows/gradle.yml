@@ -39,8 +39,5 @@ jobs:
           tags: juanprrr/actividad-1-datos2 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Package
-        path: build/libs
+
     
