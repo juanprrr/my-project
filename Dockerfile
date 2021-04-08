@@ -1,17 +1,9 @@
-FROM openjdk:8-jdk-alpine
 
-ARG JAR_FILE=target/find-links.jar
-ARG JAR_LIB_FILE=target/lib/
+FROM openjdk:8-jre-alpine
 
-# cd /usr/local/runme
-WORKDIR /usr/local/runme
+EXPOSE 8080
 
-# copy target/find-links.jar /usr/local/runme/app.jar
-COPY ${JAR_FILE} app.jar
+COPY ./build/libs/my-app-1.0-SNAPSHOT.jar /usr/app/
+WORKDIR /usr/app
 
-# copy project dependencies
-# cp -rf target/lib/  /usr/local/runme/lib
-ADD ${JAR_LIB_FILE} lib/
-
-# java -jar /usr/local/runme/app.jar
-ENTRYPOINT ["java","-jar","app.jar"]]
+ENTRYPOINT ["java", "-jar", "my-app-1.0-SNAPSHOT.jar"]
